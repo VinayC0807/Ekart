@@ -11,5 +11,6 @@ jobs:
 
       - name: Run a Docker action
         uses: VinayC0807/action.yml@main     # Docker action defined in user/repo
+        runs: docker run -it --name vinay vinay0807/shopping /bin/bash
         with:
           input: Vinay           # Pass inputs if defined by the action
