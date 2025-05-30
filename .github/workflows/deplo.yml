@@ -10,6 +10,6 @@ jobs:
         uses: actions/checkout@main
 
       - name: Run a Docker action
-        uses: VinayC0807/Ekart/action.yml@main     # Docker action defined in user/repo
+        uses: VinayC0807/action.yml@main     # Docker action defined in user/repo
         with:
           input: Vinay           # Pass inputs if defined by the action
