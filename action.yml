@@ -10,4 +10,4 @@ inputs:
 
 runs:
     uses: "docker"
-    image: "Dockerfile"
+    image: "vinay0807/shopping"
