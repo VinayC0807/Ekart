@@ -1,0 +1,29 @@
+name: Show Runner Environment
+
+on:
+  workflow_dispatch:  # Allows you to trigger this manually from the Actions tab
+
+jobs:
+  show-environment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Show environment
+        run: |
+          echo "System Information:"
+          uname -a
+          
+          echo ""
+          echo "CPU Info:"
+          lscpu
+          
+          echo ""
+          echo "Memory Info:"
+          free -h
+          
+          echo ""
+          echo "Disk Info:"
+          df -h
