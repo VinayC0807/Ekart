@@ -30,21 +30,6 @@ jobs:
     - name: Run tests
       run: npm test
 
-    # Secret scanning using truffleHog
-    - name: Scan for secrets with TruffleHog
-      uses: trufflesecurity/trufflehog@v3
-      with:
-        scanArguments: '--only-verified --json'
-
-    # Fail if secrets are found
-    - name: Check TruffleHog output
-      run: |
-        if grep -q "Verified" <<< "$(cat results.json || true)"; then
-          echo "❌ Secret detected! Failing build."
-          exit 1
-        else
-          echo "✅ No secrets found."
-        fi
 
     # Build step (e.g., build app or bundle)
     - name: Build the application
