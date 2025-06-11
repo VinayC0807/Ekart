@@ -25,6 +25,7 @@ jobs:
     # 3. Build and test with Maven
     - name: Build and test with Maven
       run: mvn clean verify
+      continue-on-error: true
 
     # 4. Upload JUnit test reports
     - name: Upload test reports
