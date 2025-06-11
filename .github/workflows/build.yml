@@ -32,13 +32,8 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: junit-test-report
-        path: target/surefire-reports/*.xml
+        path: artifacts/my-artifacts
 
-    # 5. Upload built JAR file(s)
-    - name: Upload JAR artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: application-jar
-        path: target/*.jar
+   
 
     
