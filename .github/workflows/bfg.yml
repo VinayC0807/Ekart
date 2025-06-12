@@ -19,7 +19,7 @@ jobs:
            git config --global user.email "vinay@gmail.com"
            git clone --mirror https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
            ls
-           cd Ekart/
+           cd Ekart.git/
            ls -a
            git rm .env
            ls -a
