@@ -16,7 +16,7 @@ jobs:
 
       - name: Download BFG Repo-Cleaner
         run: |
-          git clone --mirror https://github.com/VinayC0807/Ekart.git
+          git clone --mirror https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
           cd Ekart.git
           curl -L -o ../bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/1.14.0/bfg-1.14.0.jar
           java -jar ../bfg.jar --strip-blobs-bigger-than 100M .
