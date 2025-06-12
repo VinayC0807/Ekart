@@ -1,0 +1,33 @@
+name: Git Filter Repo Cleanup
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+permissions:
+  contents: write  # Required to push with GITHUB_TOKEN
+
+jobs:
+  clean-history:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Python and pip
+        run: |
+           git clone https://github.com/VinayC0807/Ekart.git
+           ls
+           cd Ekart/
+           ls -a
+           git rm .env
+           ls -a
+           git commit -m "remove .env file"
+           git push
+           git pull
+           find . -name ".env"
+           git log --stat --all -- .env
+           wget https://repo1.maven.org/maven2/com/madgag/bfg/1.14.0/bfg-1.14.0.jar -O bfg.jar
+           java -jar bfg.jar --delete-files .env
+           git log --stat --all -- .env
+           git reflog expire --expire=now --all
+           git gc --prune=now --aggressive
+           git push origin --force --all
+           git pull
