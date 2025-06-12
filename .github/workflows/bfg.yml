@@ -17,9 +17,9 @@ jobs:
            git init
            git config --global user.name "Vinay C"
            git config --global user.email "vinay@gmail.com"
-           git clone https://github.com/VinayC0807/Ekart.git
+           git clone --mirror https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git cleaned-repo.git
            ls
-           cd Ekart/
+           cd cleaned-repo.git/
            ls -a
            git rm .env
            ls -a
