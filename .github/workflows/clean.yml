@@ -37,4 +37,6 @@ jobs:
       - name: Push cleaned repo to a new branch
         run: |
           cd Ekart.git
-          git push origin --force --mirror --no-verify
+          git push origin --force --all
+          git push origin --force --tags
+
