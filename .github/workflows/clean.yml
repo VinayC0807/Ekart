@@ -17,4 +17,5 @@ jobs:
       - name: Download BFG Repo-Cleaner
         run: |
           curl -L -o bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/1.14.0/bfg-1.14.0.jar
-          bfg --version
+          java -jar bfg.jar --version
+
