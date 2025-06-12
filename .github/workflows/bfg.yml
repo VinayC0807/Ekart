@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Install Python and pip
         run: |
+           sudo apt install git -y
+           git init
+           git config --global user.name "Vinay C"
+           git config --global user.email "vinay@gmail.com"
            git clone https://github.com/VinayC0807/Ekart.git
            ls
            cd Ekart/
