@@ -45,6 +45,6 @@ jobs:
       - name: Push cleaned repo back to GitHub
         run: |
           cd cleaned-repo.git
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
           git push origin --force --all
           git push origin --force --tags
