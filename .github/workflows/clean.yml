@@ -19,7 +19,6 @@ jobs:
           git clone https://github.com/VinayC0807/Ekart.git
           cd Ekart
           curl -L -o bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/1.14.0/bfg-1.14.0.jar
-          find . -name ".env"
           git log --stat --all .env
           bfg --delete-files .env
           
