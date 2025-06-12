@@ -43,5 +43,5 @@ jobs:
             git update-ref -d "$ref"
           done
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
-          git push origin main --force --all
-          git push origin main --force --tags
+          git push origin --force --all
+          git push origin --force --tags
