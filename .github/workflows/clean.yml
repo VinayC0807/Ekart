@@ -27,7 +27,7 @@ jobs:
       - name: Run git-filter-repo to delete `.env` files
         run: |
           cd cleaned-repo.git
-          git filter-repo --path .env --invert-paths
+          git filter-repo --path my.env --invert-paths
 
       - name: Cleanup after rewrite
         run: |
