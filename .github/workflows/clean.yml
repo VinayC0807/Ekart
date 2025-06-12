@@ -23,6 +23,7 @@ jobs:
           java -jar ../bfg.jar --delete-files .env .
           git reflog expire --expire=now --all
           git gc --prune=now --aggressive
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
           git push --force --all
           git push --force --tags
 
