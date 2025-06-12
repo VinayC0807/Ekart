@@ -16,30 +16,13 @@ jobs:
 
       - name: Download BFG Repo-Cleaner
         run: |
+          git clone https://github.com/VinayC0807/Ekart.git
+          cd Ekart.git
           curl -L -o bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/1.14.0/bfg-1.14.0.jar
+          find . -name ".env"
+          git log --stat --all .env
+          bfg --delete-files .env
+          
 
-      - name: Clone repo as a bare mirror
-        run: |
-          git clone --mirror https://github.com/VinayC0807/Ekart.git
-
-      - name: Run BFG to strip blobs > 100MB
-        run: |
-          cd Ekart.git
-          java -jar ../bfg.jar --strip-blobs-bigger-than 100M
-
-      - name: Clean up and prepare for push
-        run: |
-          cd Ekart.git
-          git reflog expire --expire=now --all
-          git gc --prune=now --aggressive
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
-
-      - name: Push cleaned repo to a new branch
-        run: |
-          cd Ekart.git
-          for ref in $(git for-each-ref --format='%(refname)' refs/pull/); do
-           git update-ref -d "$ref"
-          done
-          git push origin --force --all
-          git push origin --force --tags
+      
 
