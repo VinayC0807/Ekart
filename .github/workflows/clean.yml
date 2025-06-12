@@ -24,17 +24,17 @@ jobs:
 
       - name: Run BFG to strip blobs > 100MB
         run: |
-          cd cleaned-repo.git
+          cd Ekart.git
           java -jar ../bfg.jar --strip-blobs-bigger-than 100M
 
       - name: Clean up and prepare for push
         run: |
-          cd cleaned-repo.git
+          cd Ekart.git
           git reflog expire --expire=now --all
           git gc --prune=now --aggressive
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
 
       - name: Push cleaned repo to a new branch
         run: |
-          cd cleaned-repo.git
+          cd Ekart.git
           git push origin --force --mirror --no-verify
