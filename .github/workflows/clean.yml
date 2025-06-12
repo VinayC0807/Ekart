@@ -46,5 +46,5 @@ jobs:
         run: |
           cd cleaned-repo.git
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
-          git push --force --all
-          git push --force --tags
+          git push origin --force --all
+          git push origin --force --tags
