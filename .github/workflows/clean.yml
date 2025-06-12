@@ -1,0 +1,20 @@
+name: BFG Cleanup
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  clean-history:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Java
+        run: |
+          sudo apt update
+          sudo apt install -y openjdk-17-jdk
+          java -version
+
+      - name: Download BFG Repo-Cleaner
+        run: |
+          curl -L -o bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/1.14.0/bfg-1.14.0.jar
+          bfg --version
