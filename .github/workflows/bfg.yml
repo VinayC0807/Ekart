@@ -13,19 +13,14 @@ jobs:
     steps:
       - name: Install Python and pip
         run: |
-           sudo apt install git -y
-           git init
            git config --global user.name "Vinay C"
            git config --global user.email "vinay@gmail.com"
-           git clone --mirror https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
+           git clone --mirror https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git cleaned-repo.git
            ls
-           cd Ekart.git/
+           cd cleaned-repo.git
            ls -a
            git rm .env
            ls -a
-           git commit -m "remove .env file"
-           git push
-           git pull
            find . -name ".env"
            git log --stat --all -- .env
            wget https://repo1.maven.org/maven2/com/madgag/bfg/1.14.0/bfg-1.14.0.jar -O bfg.jar
@@ -35,4 +30,4 @@ jobs:
            git gc --prune=now --aggressive
            git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
            git push origin --force --all
-           git pull
+           
