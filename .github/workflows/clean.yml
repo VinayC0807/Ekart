@@ -42,6 +42,6 @@ jobs:
           for ref in $(git for-each-ref --format='%(refname)' refs/pull/); do
             git update-ref -d "$ref"
           done
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
-          git push --force --all
-          git push --force --tags
+          git remote set-url origin main https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VinayC0807/Ekart.git
+          git push origin main --force --all
+          git push origin main --force --tags
