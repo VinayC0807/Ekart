@@ -1,17 +1,17 @@
-name: SonarCloud Analysis for Spring Boot
+name: SonarCloud Scan for Spring Boot
 
 on:
- workflow_dispatch:
-
+  workflow_dispatch:
 jobs:
   sonarcloud:
+    name: Analyze with SonarCloud
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Required for SonarCloud blame info
+          fetch-depth: 0  # Needed for full history and blame info
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -24,13 +24,22 @@ jobs:
         with:
           path: |
             ~/.m2/repository
-            !~/.m2/repository/org/apache/maven/plugins/maven-surefire-plugin
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
-            ${{ runner.os }}-maven-
+            ${{ runner.os }}-maven
 
-      - name: Build and Analyze with SonarCloud
-        run: mvn clean verify sonar:sonar -DskipTests=true
+      - name: Build and run tests with coverage
+        run: mvn clean verify -DskipTests=false
+        # This ensures tests run and JaCoCo coverage report is generated
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN:  ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=My-app
+            -Dsonar.organization=My-app
+            -Dsonar.java.binaries=target
+            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
