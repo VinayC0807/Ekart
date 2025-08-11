@@ -8,4 +8,5 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Print a message
-        run: echo "Hello from GitHub Actions!"
+        shell: cmd
+        run: echo Hello from GitHub Actions using cmd.exe!
